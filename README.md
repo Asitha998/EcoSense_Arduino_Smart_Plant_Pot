@@ -86,11 +86,6 @@ EcoSense is a smart plant pot system designed to monitor and automate plant care
 
 ## Authors
 
-- Eldu Primo (Lead Developer)
+- Asitha Dissanayaka (Developer)
 
----
-
-## License
-
-This project is licensed under the MIT License.
 
