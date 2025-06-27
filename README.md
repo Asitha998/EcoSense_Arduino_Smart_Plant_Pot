@@ -82,10 +82,4 @@ EcoSense is a smart plant pot system designed to monitor and automate plant care
 - Backend must be reachable from both ESP32 device and mobile app (same local network suggested).
 - Future improvements can include authentication, better UI, error handling, and cloud database integration.
 
----
-
-## Authors
-
-- Asitha Dissanayaka (Developer)
-
 
