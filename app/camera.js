@@ -20,15 +20,12 @@ SplashScreen.preventAutoHideAsync();
 
 // Define the WebSocket URLs for the ESP32-CAM
 const WEBSOCKET_CAMERA_URL = "ws://192.168.1.7/Camera";
-const WEBSOCKET_CAR_INPUT_URL = "ws://192.168.1.7/ArmInput";
+const WEBSOCKET_ARM_INPUT_URL = "ws://192.168.1.7/ArmInput";
 
 let websocketCamera = null;
 let websocketArmInput = null;
 
 export default function camera() {
-
-    // var webSocketCameraUrl = "ws://192.168.1.7:8080/Camera";
-    // var webSocketCarInputUrl = "ws://192.168.1.7:8080/CarInput";
 
     const [getUser, setUser] = useState([]);
     const [getUserAvatar, setUserAvatar] = useState([]);
@@ -78,7 +75,7 @@ export default function camera() {
         }, []
     );
 
-    // Initialize WebSocket connections for Camera and Car Input
+    // Initialize WebSocket connections for Camera and Arm Input
     useEffect(() => {
         initWebSocket();
 
@@ -130,25 +127,25 @@ export default function camera() {
         };
     }
 
-    // Initialize car input WebSocket
+    // Initialize arm input WebSocket
     function initArmInputWebSocket() {
-        websocketArmInput = new WebSocket(WEBSOCKET_CAR_INPUT_URL);
+        websocketArmInput = new WebSocket(WEBSOCKET_ARM_INPUT_URL);
 
         websocketArmInput.onopen = () => {
-            console.log("Car Input WebSocket connected");
+            console.log("Arm Input WebSocket connected");
         };
 
         websocketArmInput.onclose = () => {
-            console.log("Car Input WebSocket closed");
+            console.log("Arm Input WebSocket closed");
             // setTimeout(initArmInputWebSocket, 2000); // Retry connection after 2 seconds
         };
 
         websocketArmInput.onmessage = (event) => {
-            console.log("Message from Car Input WebSocket:", event.data);
+            console.log("Message from Arm Input WebSocket:", event.data);
         };
 
         websocketArmInput.onerror = (error) => {
-            console.log("Car Input WebSocket error:", error);
+            console.log("Arm Input WebSocket error:", error);
         };
     }
 
@@ -168,7 +165,7 @@ export default function camera() {
         if (websocketArmInput && websocketArmInput.readyState === WebSocket.OPEN) {
             websocketArmInput.send(data);
         } else {
-            console.warn("Car Input WebSocket is not connected");
+            console.warn("Arm Input WebSocket is not connected");
         }
     }
 
